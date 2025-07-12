@@ -1,0 +1,125 @@
+.Sidebar {
+  height: 100vh;
+  width: 80px;
+  transition: width 0.3s ease;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(45deg, #4b90ff, #ff5546, #d48422);
+  padding: 25px 15px;
+  position: relative;
+  z-index: 10;
+  color: #fff;
+}
+
+.Sidebar.expanded {
+  width: 250px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.Sidebar img {
+  width: 20px;
+}
+
+@media (max-width: 768px) {
+  .Sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    overflow: hidden;
+    background: linear-gradient(45deg, #4b90ff, #ff5546, #d48422); /* Consistent gradient */
+    transition: width 0.3s ease;
+  }
+
+  .Sidebar.expanded {
+    width: 250px;
+  }
+}
+
+.Sidebar .menu {
+  position: fixed;
+  display: block;
+  margin-left: 10px;
+  cursor: pointer;
+  top: 15px;
+  left: 15px;
+  z-index: 20;
+}
+
+.Sidebar .new-chat {
+  margin-top: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  background-color: rgba(255, 255, 255, 0.2); /* Faded glass feel */
+  border-radius: 50px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.Sidebar.expanded .recent-entry p,
+.Sidebar.expanded .new-chat p,
+.Sidebar.expanded .bottom-item p {
+  display: inline;
+}
+
+.Sidebar .top {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Scrollbar styling */
+.Sidebar .top::-webkit-scrollbar {
+  width: 6px;
+}
+
+.Sidebar .top::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.Sidebar .recent {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.Sidebar .recent-title {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+}
+
+.Sidebar .recent-entry {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  padding: 10px;
+  padding-right: 40px;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.Sidebar .recent-entry:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.Sidebar .bottom {
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.Sidebar .bottom-item {
+  padding: 10px 5px;
+  cursor: pointer;
+}
