@@ -3,6 +3,7 @@ import './Main.css';
 import { assets } from '../../assets/assets';
 import { AppContext } from '../../Context/Context';
 import { runCoherePrompt } from '../../Config/cohere';
+import sarek_icon from '../Main/sarek copy.jpg'
 
 export const Main = () => {
   const [prompt, setPrompt] = useState('');
@@ -63,7 +64,7 @@ export const Main = () => {
     <div className="Main">
       <div className="nav">
         <p>Comrade AI</p>
-        <img src={assets.user_icon} alt="user" />
+        <img src={sarek_icon} alt="user" />
       </div>
 
       <div className="Main-container">

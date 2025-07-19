@@ -15,16 +15,20 @@ const Sidebar = () => {
     saveSession
   } = useContext(AppContext);
 
+  // Detect screen width change
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      if (mobile) setExtended(false); // Default collapse on mobile
+    };
     window.addEventListener("resize", handleResize);
+    handleResize(); // Initialize on mount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleNewChat = () => {
-    if (chatHistory.length > 0) {
-      saveSession(chatHistory);
-    }
+    if (chatHistory.length > 0) saveSession(chatHistory);
     setChatHistory([]);
     alert("🆕 Started a new chat session.");
   };
@@ -42,7 +46,7 @@ const Sidebar = () => {
   };
 
   const handleSessionClick = () => {
-    // Do nothing for now — you can add navigation later
+    if (isMobile) setExtended(false); // Optional: auto-close on tap
   };
 
   return (
@@ -52,7 +56,7 @@ const Sidebar = () => {
       transition={{ duration: 0.3 }}
       className={`Sidebar ${extended ? "expanded" : ""}`}
     >
-      {/* Menu Button */}
+      {/* Menu Icon */}
       <motion.img
         whileTap={{ scale: 0.9 }}
         whileHover={{ rotate: 90 }}
@@ -64,16 +68,19 @@ const Sidebar = () => {
 
       {/* Top Section */}
       <div className="top">
-        <motion.div
-          className="new-chat"
-          onClick={handleNewChat}
-          whileHover={{ scale: 1.05 }}
-        >
-          <img src={assets.plus_icon} alt="new chat" />
-          {extended && <p>New Chat</p>}
-        </motion.div>
+        {/* New Chat */}
+        {extended && (
+          <motion.div
+            className="new-chat"
+            onClick={handleNewChat}
+            whileHover={{ scale: 1.05 }}
+          >
+            <img src={assets.plus_icon} alt="new chat" />
+            <p>New Chat</p>
+          </motion.div>
+        )}
 
-        {/* Recent Chats */}
+        {/* Recents */}
         <AnimatePresence>
           {extended && (
             <motion.div
@@ -103,35 +110,37 @@ const Sidebar = () => {
         </AnimatePresence>
       </div>
 
-      {/* Bottom Actions */}
-      <div className="bottom">
-        <motion.div
-          className="bottom-item recent-entry"
-          onClick={handleHelp}
-          whileHover={{ scale: 1.05 }}
-        >
-          <img src={assets.question_icon} alt="Help" />
-          {extended && <p>Help</p>}
-        </motion.div>
+      {/* Bottom Section */}
+      {extended && (
+        <div className="bottom">
+          <motion.div
+            className="bottom-item recent-entry"
+            onClick={handleHelp}
+            whileHover={{ scale: 1.05 }}
+          >
+            <img src={assets.question_icon} alt="Help" />
+            <p>Help</p>
+          </motion.div>
 
-        <motion.div
-          className="bottom-item recent-entry"
-          onClick={handleActivity}
-          whileHover={{ scale: 1.05 }}
-        >
-          <img src={assets.history_icon} alt="Activity" />
-          {extended && <p>Activity</p>}
-        </motion.div>
+          <motion.div
+            className="bottom-item recent-entry"
+            onClick={handleActivity}
+            whileHover={{ scale: 1.05 }}
+          >
+            <img src={assets.history_icon} alt="Activity" />
+            <p>Activity</p>
+          </motion.div>
 
-        <motion.div
-          className="bottom-item recent-entry"
-          onClick={handleSettings}
-          whileHover={{ scale: 1.05 }}
-        >
-          <img src={assets.setting_icon} alt="Settings" />
-          {extended && <p>Settings</p>}
-        </motion.div>
-      </div>
+          <motion.div
+            className="bottom-item recent-entry"
+            onClick={handleSettings}
+            whileHover={{ scale: 1.05 }}
+          >
+            <img src={assets.setting_icon} alt="Settings" />
+            <p>Settings</p>
+          </motion.div>
+        </div>
+      )}
     </motion.div>
   );
 };

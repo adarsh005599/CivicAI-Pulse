@@ -127,11 +127,11 @@
 /* Mobile: Sidebar always shows in min-width */
 @media (max-width: 768px) {
   .Sidebar {
-    width: 80px !important;
+    width: 35px !important;
     padding: 20px 15px;
   }
 
   .Sidebar.expanded {
-    width: 250px !important;
+    width: 200px !important;
   }
 }
