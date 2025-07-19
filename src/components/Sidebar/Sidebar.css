@@ -1,25 +1,20 @@
-/* Main Sidebar */
 .Sidebar {
   height: 100vh;
   width: 80px;
-  transition: width 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 0;
   z-index: 1000;
-
   backdrop-filter: blur(12px);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
-
   padding: 20px 15px;
   color: #fff;
   overflow: hidden;
+  transition: width 0.3s ease;
 }
 
 .Sidebar.expanded {
@@ -30,10 +25,13 @@
   width: 20px;
 }
 
+.menu {
+  cursor: pointer;
+  margin-bottom: 20px;
+}
 
-
-/* New Chat Button */
-.Sidebar .new-chat {
+/* New Chat */
+.new-chat {
   margin-top: 60px;
   display: inline-flex;
   align-items: center;
@@ -47,8 +45,47 @@
   cursor: pointer;
   transition: background 0.3s ease;
 }
-.Sidebar .new-chat:hover {
+.new-chat:hover {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Top scroll */
+.top {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.top::-webkit-scrollbar {
+  width: 6px;
+}
+.top::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+/* Recent Chats */
+.recent {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.recent-title {
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.recent-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  padding-right: 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.recent-entry:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .Sidebar.expanded .recent-entry p,
@@ -56,84 +93,45 @@
 .Sidebar.expanded .bottom-item p {
   display: inline;
 }
-
-.Sidebar .top {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding-right: 4px;
-  background: inherit;
+.recent-entry p {
+  display: none;
 }
 
-/* Scrollbar */
-.Sidebar .top::-webkit-scrollbar {
-  width: 6px;
-}
-.Sidebar .top::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-}
-
-/* Recent Chats */
-.Sidebar .recent {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-}
-.Sidebar .recent-title {
-  margin-bottom: 10px;
-  font-weight: 600;
-  font-size: 14px;
-  color: #fff;
-}
-.Sidebar .recent-entry {
-  display: flex;
-  align-items: start;
-  gap: 10px;
-  padding: 10px;
-  padding-right: 40px;
-  border-radius: 50px;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.Sidebar .recent-entry:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Bottom Options: Help, Settings */
-.Sidebar .bottom {
+/* Bottom Buttons */
+.bottom {
   padding-top: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
 }
-.Sidebar .bottom-item {
+.bottom-item {
   padding: 10px 12px;
-  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 10px;
   background-color: white;
-  color: #000;
+  color: black;
   margin-bottom: 10px;
   border-radius: 12px;
   font-weight: 500;
+  cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
 }
-.Sidebar .bottom-item:hover {
+.bottom-item:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+.Sidebar:not(.expanded) .bottom-item p {
+  display: none;
+}
 
-/* Responsive - Mobile */
+/* Mobile: Sidebar always shows in min-width */
 @media (max-width: 768px) {
   .Sidebar {
-    width: 0;
-    padding: 0;
+    width: 80px !important;
+    padding: 20px 15px;
   }
 
   .Sidebar.expanded {
-    width: 220px;
-    padding: 20px 15px;
+    width: 250px !important;
   }
 }

@@ -15,12 +15,19 @@ const Sidebar = () => {
     saveSession
   } = useContext(AppContext);
 
-  // Auto update mobile check on resize
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const handleNewChat = () => {
+    if (chatHistory.length > 0) {
+      saveSession(chatHistory);
+    }
+    setChatHistory([]);
+    alert("🆕 Started a new chat session.");
+  };
 
   const handleHelp = () => {
     alert("🆘 Help:\nAsk anything like: 'What is AI?' or 'Suggest UI improvements'");
@@ -30,28 +37,18 @@ const Sidebar = () => {
     alert(`📜 You have ${allSessions.length} saved chat sessions.`);
   };
 
-  const handleNewChat = () => {
-    if (chatHistory.length > 0) {
-      saveSession(chatHistory); // ✅ Save the current visible chat
-    }
-    setChatHistory([]); // ✅ Clear only the current chat
-    alert("🆕 Started a new chat session.");
-
-    if (isMobile) setExtended(false); // Auto-close on mobile
-  };
-
   const handleSettings = () => {
     alert("⚙️ Settings: Coming soon!");
   };
 
   const handleSessionClick = () => {
-    if (isMobile) setExtended(false); // Auto-close on mobile
+    // Do nothing for now — you can add navigation later
   };
 
   return (
     <motion.div
-      initial={{ width: isMobile ? 0 : 80 }}
-      animate={{ width: extended ? 250 : isMobile ? 0 : 80 }}
+      initial={{ width: 80 }}
+      animate={{ width: extended ? 250 : 80 }}
       transition={{ duration: 0.3 }}
       className={`Sidebar ${extended ? "expanded" : ""}`}
     >
@@ -67,7 +64,6 @@ const Sidebar = () => {
 
       {/* Top Section */}
       <div className="top">
-        {/* New Chat Button */}
         <motion.div
           className="new-chat"
           onClick={handleNewChat}
@@ -90,7 +86,7 @@ const Sidebar = () => {
               <p className="recent-title">Recent</p>
               {allSessions.map((session, i) => (
                 <motion.div
-                  key={session.id}
+                  key={session.id || i}
                   className="recent-entry"
                   onClick={handleSessionClick}
                   whileHover={{ scale: 1.03 }}
