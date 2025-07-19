@@ -10,7 +10,7 @@
 #root {
   height: 100vh;
   display: flex;
-  background: linear-gradient(45deg, #4b90ff, #ff5546, #d17d18);
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 }
 
 body.dark-mode {

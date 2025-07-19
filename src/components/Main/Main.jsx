@@ -10,6 +10,7 @@ export const Main = () => {
   const chatContainerRef = useRef(null);
   const { chatHistory, setChatHistory, saveSession } = useContext(AppContext);
 
+  // Auto-scroll on chat update
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -17,7 +18,7 @@ export const Main = () => {
   }, [chatHistory]);
 
   const handleSend = async () => {
-    if (!prompt.trim()) return;
+    if (isTyping || !prompt.trim()) return;
 
     const newUserMsg = { role: 'user', prompt };
     const updatedHistory = [...chatHistory, newUserMsg];
@@ -35,7 +36,7 @@ export const Main = () => {
     setChatHistory(newChat);
     setIsTyping(false);
     setPrompt('');
-    saveSession(newChat);
+    saveSession(newChat); // Save to localStorage or DB
   };
 
   const startListening = () => {
@@ -87,6 +88,7 @@ export const Main = () => {
               placeholder="Enter a prompt here"
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleSend()}
             />
 
             <label htmlFor="file-upload">
