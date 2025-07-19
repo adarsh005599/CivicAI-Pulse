@@ -12,35 +12,40 @@ const Sidebar = () => {
     chatHistory,
     setChatHistory,
     allSessions,
-    saveSession,
-    selectedSession,
-    setSelectedSession,
+    saveSession
   } = useContext(AppContext);
 
+  // Auto update mobile check on resize
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleNewChat = () => {
-    if (chatHistory.length > 0) {
-      saveSession(chatHistory);
-    }
-    setChatHistory([]);
-    setSelectedSession(null);
-    alert("🆕 Started a new chat session.");
-    if (isMobile) setExtended(false);
+  const handleHelp = () => {
+    alert("🆘 Help:\nAsk anything like: 'What is AI?' or 'Suggest UI improvements'");
   };
 
-  const handleHelp = () => alert("🆘 Help: Ask anything!");
-  const handleActivity = () => alert(`📜 You have ${allSessions.length} saved sessions.`);
-  const handleSettings = () => alert("⚙️ Settings coming soon!");
+  const handleActivity = () => {
+    alert(`📜 You have ${allSessions.length} saved chat sessions.`);
+  };
 
-  const handleSessionClick = (session) => {
-    setChatHistory(session.chat);
-    setSelectedSession(session);
-    if (isMobile) setExtended(false);
+  const handleNewChat = () => {
+    if (chatHistory.length > 0) {
+      saveSession(chatHistory); // ✅ Save the current visible chat
+    }
+    setChatHistory([]); // ✅ Clear only the current chat
+    alert("🆕 Started a new chat session.");
+
+    if (isMobile) setExtended(false); // Auto-close on mobile
+  };
+
+  const handleSettings = () => {
+    alert("⚙️ Settings: Coming soon!");
+  };
+
+  const handleSessionClick = () => {
+    if (isMobile) setExtended(false); // Auto-close on mobile
   };
 
   return (
@@ -50,6 +55,7 @@ const Sidebar = () => {
       transition={{ duration: 0.3 }}
       className={`Sidebar ${extended ? "expanded" : ""}`}
     >
+      {/* Menu Button */}
       <motion.img
         whileTap={{ scale: 0.9 }}
         whileHover={{ rotate: 90 }}
@@ -61,6 +67,7 @@ const Sidebar = () => {
 
       {/* Top Section */}
       <div className="top">
+        {/* New Chat Button */}
         <motion.div
           className="new-chat"
           onClick={handleNewChat}
@@ -70,6 +77,7 @@ const Sidebar = () => {
           {extended && <p>New Chat</p>}
         </motion.div>
 
+        {/* Recent Chats */}
         <AnimatePresence>
           {extended && (
             <motion.div
@@ -80,16 +88,17 @@ const Sidebar = () => {
               transition={{ duration: 0.3 }}
             >
               <p className="recent-title">Recent</p>
-              {allSessions.map((session) => (
+              {allSessions.map((session, i) => (
                 <motion.div
                   key={session.id}
-                  className={`recent-entry ${selectedSession?.id === session.id ? "active-chat" : ""}`}
-                  onClick={() => handleSessionClick(session)}
+                  className="recent-entry"
+                  onClick={handleSessionClick}
                   whileHover={{ scale: 1.03 }}
                 >
                   <img src={assets.message_icon} alt="chat" />
                   <p>
-                    {(session.chat.find(msg => msg.role === "user")?.prompt || "Empty").slice(0, 30)}...
+                    {(session.chat.find(msg => msg.role === "user")?.prompt || "Empty").slice(0, 30)}
+                    ...
                   </p>
                 </motion.div>
               ))}
@@ -98,7 +107,7 @@ const Sidebar = () => {
         </AnimatePresence>
       </div>
 
-      {/* Bottom Section */}
+      {/* Bottom Actions */}
       <div className="bottom">
         <motion.div
           className="bottom-item recent-entry"
@@ -108,6 +117,7 @@ const Sidebar = () => {
           <img src={assets.question_icon} alt="Help" />
           {extended && <p>Help</p>}
         </motion.div>
+
         <motion.div
           className="bottom-item recent-entry"
           onClick={handleActivity}
@@ -116,6 +126,7 @@ const Sidebar = () => {
           <img src={assets.history_icon} alt="Activity" />
           {extended && <p>Activity</p>}
         </motion.div>
+
         <motion.div
           className="bottom-item recent-entry"
           onClick={handleSettings}
