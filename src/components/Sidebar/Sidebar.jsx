@@ -45,8 +45,9 @@ const Sidebar = () => {
     alert("⚙️ Settings: Coming soon!");
   };
 
-  const handleSessionClick = () => {
-    if (isMobile) setExtended(false); // Optional: auto-close on tap
+  const handleSessionClick = (session) => {
+    setChatHistory(session.chat || []);
+    if (isMobile) setExtended(false); 
   };
 
   return (
@@ -61,7 +62,7 @@ const Sidebar = () => {
         whileTap={{ scale: 0.9 }}
         whileHover={{ rotate: 90 }}
         onClick={() => setExtended(prev => !prev)}
-        className="menu"
+        className="menu "
         src={assets.menu_icon}
         alt="menu"
       />
@@ -90,12 +91,11 @@ const Sidebar = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <p className="recent-title">Recent</p>
               {allSessions.map((session, i) => (
                 <motion.div
                   key={session.id || i}
                   className="recent-entry"
-                  onClick={handleSessionClick}
+                  onClick={() => handleSessionClick(session)}
                   whileHover={{ scale: 1.03 }}
                 >
                   <img src={assets.message_icon} alt="chat" />

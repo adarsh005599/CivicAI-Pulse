@@ -1,33 +1,22 @@
-import axios from "axios";
+// src/Config/gemini.js
 
-const COHERE_API_KEY = import.meta.env.VITE_COHERE_API_KEY;
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-export const runCoherePrompt = async (prompt) => {
+const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+
+const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+
+export const runGeminiPrompt = async (prompt) => {
   try {
-    const response = await axios.post(
-      "https://api.cohere.ai/v1/chat",
-      {
-        message: prompt,
-        model: "command-r",
-        temperature: 0.7,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${COHERE_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    // 👇 Try to get the actual message
-    const text =
-      response?.data?.text ||
-      response?.data?.generations?.[0]?.text ||
-      response?.data?.response;
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = await response.text();
 
-    return text || "⚠️ No text response found.";
+    return text || "⚠️ No response from Gemini.";
   } catch (error) {
-    console.error("❌ Cohere API Error:", error.response?.data || error.message);
-    return "⚠️ Error fetching response from Cohere.";
+    console.error("Gemini API Error ❌:", error);
+    return "⚠️ Error fetching from Gemini.";
   }
 };

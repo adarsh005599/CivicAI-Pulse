@@ -2,8 +2,9 @@ import React, { useContext, useState, useEffect, useRef } from 'react';
 import './Main.css';
 import { assets } from '../../assets/assets';
 import { AppContext } from '../../Context/Context';
-import { runCoherePrompt } from '../../Config/cohere';
+import { runGeminiPrompt } from "../../Config/cohere.js";
 import sarek_icon from '../Main/sarek copy.jpg'
+import ReactMarkdown from 'react-markdown';
 
 export const Main = () => {
   const [prompt, setPrompt] = useState('');
@@ -26,7 +27,7 @@ export const Main = () => {
     setChatHistory(updatedHistory);
     setIsTyping(true);
 
-    const reply = await runCoherePrompt(prompt);
+    const reply = await runGeminiPrompt(prompt);
 
     const newBotMsg = {
       role: 'assistant',
@@ -76,7 +77,9 @@ export const Main = () => {
         <div className="chat-container" ref={chatContainerRef}>
           {chatHistory.map((msg, index) => (
             <div key={index} className={`chat-bubble ${msg.role === 'user' ? 'user' : 'ai'}`}>
-              {msg.role === 'user' ? msg.prompt : msg.response}
+              {msg.role === 'user' ? msg.prompt : 
+              <ReactMarkdown>{msg.response}</ReactMarkdown>
+               }
             </div>
           ))}
           {isTyping && <div className="chat-bubble ai typing">Typing...</div>}
@@ -102,7 +105,7 @@ export const Main = () => {
           </div>
 
           <p className="bottom-info">
-            ⚠️ Cohere AI may not always be accurate. Double-check important facts.
+            ⚠️ Comrade AI may not always be accurate. Double-check important facts.
           </p>
         </div>
       </div>
