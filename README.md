@@ -1,12 +1,30 @@
-# React + Vite
+🌍 Live Demo
+🔗 Visit Comrade AI Live => https://comrade-ai.onrender.com
+🧠 Comrade AI
+Your Intelligent AI Companion – built using React and Cohere
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+Comrade AI is an intelligent assistant web app built with Cohere’s NLP APIs and a modern React frontend. It acts as a smart chatbot capable of answering user questions, providing suggestions, and assisting with everyday tasks – like your AI buddy on the web.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Features
+🤖 Natural Language Understanding with Cohere
 
-## Expanding the ESLint configuration
+💬 Real-time Chat Interface
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+⚡ Fast, Responsive UI with React
+
+🎨 Clean and modern UI
+
+🌐 Fully responsive – works on all screen sizes
+
+🛠️ Built With
+React+Vite
+Cohere API
+CSS/Tailwind (or whatever styling you used)
+React Context, Framer Motion, Toast, etc.
+
+🤝 Contributing
+Pull requests are welcome! For major changes, please open an issue to discuss them first.
+
+📜 License
+MIT
