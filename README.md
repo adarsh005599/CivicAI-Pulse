@@ -1,5 +1,7 @@
 🌍 Live Demo
 🔗 Visit Comrade AI Live => https://comrade-ai.onrender.com
+                  -----or-----
+🔗 Visit Comrade AI Live => https://comrade-ai.vercel.app/
 🧠 Comrade AI
 Your Intelligent AI Companion – built using React and Cohere
 ## 📸 Screenshots  
