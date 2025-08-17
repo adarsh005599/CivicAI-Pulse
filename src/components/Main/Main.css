@@ -121,7 +121,7 @@
 
 
 .chat-bubble.ai {
-  background: linear-gradient(135deg, #3f2b96, #a8c0ff, #ff6a00);
+  background:  #000000;
   padding: 12px 16px;
   border-radius: 16px;
   max-width: 80%;
