@@ -3,7 +3,7 @@ import './Main.css';
 import { assets } from '../../assets/assets';
 import { AppContext } from '../../Context/Context';
 import { runGeminiPrompt } from "../../Config/cohere.js";
-import sarek_icon from '../Main/sarek copy.jpg'
+import sarek_icon from '../Main/sarek copy.jpg';
 import ReactMarkdown from 'react-markdown';
 
 export const Main = () => {
@@ -11,6 +11,19 @@ export const Main = () => {
   const [isTyping, setIsTyping] = useState(false);
   const chatContainerRef = useRef(null);
   const { chatHistory, setChatHistory, saveSession } = useContext(AppContext);
+
+  // System prompt for FixMyCity
+  const systemPrompt = {
+    role: 'system',
+    response: "You are Comrade AI, integrated inside FixMyCity civic platform. Help citizens with reporting civic issues, guiding them about dashboards, and answering questions related to FixMyCity features."
+  };
+
+  // Initialize chat with system prompt if empty
+  useEffect(() => {
+    if (chatHistory.length === 0) {
+      setChatHistory([systemPrompt]);
+    }
+  }, []);
 
   // Auto-scroll on chat update
   useEffect(() => {
@@ -79,7 +92,7 @@ export const Main = () => {
             <div key={index} className={`chat-bubble ${msg.role === 'user' ? 'user' : 'ai'}`}>
               {msg.role === 'user' ? msg.prompt : 
               <ReactMarkdown>{msg.response}</ReactMarkdown>
-               }
+              }
             </div>
           ))}
           {isTyping && <div className="chat-bubble ai typing">Typing...</div>}
