@@ -15,7 +15,7 @@ export const Main = () => {
   // System prompt for FixMyCity
   const systemPrompt = {
     role: 'system',
-    response: "You are Comrade AI, integrated inside FixMyCity civic platform. Help citizens with reporting civic issues, guiding them about dashboards, and answering questions related to FixMyCity features."
+    response: "Hello!! I am a FixMyCity Assistant. How can help you today?"
   };
 
   // Initialize chat with system prompt if empty
