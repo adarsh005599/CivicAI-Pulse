@@ -7,6 +7,7 @@ import sarek_icon from '../Main/sarek copy.jpg';
 import ReactMarkdown from 'react-markdown';
 
 export const Main = () => {
+  
   const [prompt, setPrompt] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const chatContainerRef = useRef(null);
