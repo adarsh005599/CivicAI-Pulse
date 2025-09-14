@@ -3,7 +3,7 @@ import './Main.css';
 import { assets } from '../../assets/assets';
 import { AppContext } from '../../Context/Context';
 import { runGeminiPrompt } from "../../Config/cohere.js";
-import sarek_icon from '../Main/logo.jpeg'
+import logo from '../Main/logo.png'
 import ReactMarkdown from 'react-markdown';
 
 export const Main = () => {
@@ -65,7 +65,7 @@ export const Main = () => {
     <div className="Main">
       <div className="nav">
         <p>Comrade AI</p>
-        <img src={sarek_icon} alt="user" />
+        <img src={logo} alt="user" />
       </div>
 
       <div className="Main-container">
