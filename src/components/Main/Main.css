@@ -3,7 +3,7 @@
   height: min-content;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #0D324D, #7F5A83);
+  background: linear-gradient(135deg, #161e3b, #1f3c88); /* govt-style dark blues */
   animation: gradientShift 12s ease infinite;
   padding-left: 40px; /* respects collapsed sidebar */
 }
@@ -71,8 +71,8 @@
 }
 
 .greet {
-  margin: 50px 0px;
-  font-size: 40px;
+  margin: 40px 0;
+  font-size: 32px;
   font-weight: 600;
   padding: 20px;
   color: #f5f5f5;
@@ -80,61 +80,61 @@
 }
 
 .greet span {
-  background: linear-gradient(135deg, #4b90ff, #ff6a5e, #f5a623);
+  background: linear-gradient(135deg, #1f3c88, #4b90ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 
 /* Chat Box */
 
 
 /* Chat Bubbles */
+/* Chat container */
 .chat-container {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 18px;            /* tighter spacing */
   scroll-behavior: smooth;
   flex-grow: 1;
-  padding: 30px;
+  padding: 20px 12px;   /* reduce side padding */
   overflow-y: auto;
   min-height: 60vh;
 }
 
+/* User Messages (Right) */
 .chat-bubble.user {
   align-self: flex-end;
-  background: #1e293b;
-  color:#ffffff;;
-  text-align: left;
+  background: #e6eef9;
+  color: #1a202c;
   font-size: 15.5px;
   line-height: 1.6;
   padding: 12px 18px;
   border-radius: 16px 16px 4px 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  width: fit-content;
-  max-width: 75%;
-  min-width: 60px;
+  max-width: 65%;       /* narrower, feels natural */
+  margin-right: 10px;   /* keeps from touching edge */
   animation: fadeInUp 0.3s ease-in-out;
   transition: all 0.3s ease;
   white-space: pre-wrap;
 }
 
-
-
+/* AI Messages (Left) */
 .chat-bubble.ai {
-  background:  #000000;
-  padding: 12px 16px;
-  border-radius: 16px;
-  max-width: 80%;
-  margin: 10px 0;
-  align-self: flex-start;
-  line-height: 1.6;
+  background: linear-gradient(135deg, #1f3c88, #4b90ff);
+  color: #ffffff;
   font-size: 15.5px;
-  padding: 16px 20px;
+  line-height: 1.6;
+  padding: 14px 18px;
+  border-radius: 16px 16px 16px 4px;
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
-  animation: fadeIn 0.4s ease-in-out;
-    color: #ffffffde; /* Softer white */
-  text-shadow: 0 1px 1px rgba(0,0,0,0.3); /* Helps contrast */
+  max-width: 65%;       /* narrower, chat-style */
+  margin-left: 10px;    /* keeps from touching edge */
+  align-self: flex-start;
+  animation: fadeInUp 0.4s ease-out;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
 }
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -190,10 +190,10 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  background: rgba(4, 3, 3, 0.902);
+  background: #ffffff;
   padding: 10px 20px;
   border-radius: 50px;
-  border: 2px solid transparent;
+  border: 2px solid #1f3c88;
   transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -208,7 +208,7 @@
   border: none;
   outline: none;
   font-size: 16px;
-  color: wheat;
+  color: #1a202c;
 }
 
 .search-box img {
@@ -224,9 +224,7 @@
 .bottom-info {
   text-align: center;
   font-size: 12px;
-  background: linear-gradient(45deg, #4b90ff, #ff5546, #ff8c00);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #8c8c8c;
   margin-top: 8px;
 }
 
