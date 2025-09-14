@@ -71,12 +71,12 @@
 }
 
 .greet {
-  margin: 40px 0;
+  margin: 40px 0px 20px 0px;
   font-size: 32px;
   font-weight: 600;
   padding: 20px;
   color: #f5f5f5;
-  text-align: center;
+  text-align: left;
 }
 
 .greet span {
@@ -97,42 +97,42 @@
   gap: 18px;            /* tighter spacing */
   scroll-behavior: smooth;
   flex-grow: 1;
-  padding: 20px 12px;   /* reduce side padding */
+  padding: 0px 0px;   /* reduce side padding */
   overflow-y: auto;
   min-height: 60vh;
 }
 
 /* User Messages (Right) */
+.chat-bubble {
+  padding: 12px 16px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  max-width: 65%;       /* ✅ prevents stretching */
+  text-align: left;     /* ✅ keeps text aligned properly */
+}
+
+/* AI bubble - sticks left */
+.chat-bubble.ai {
+  align-self: flex-start;
+  background: linear-gradient(135deg, #1f3c88, #4b90ff);
+  color: #fff;
+  margin-left: 0px;     /* ✅ small margin from edge */
+  border-top-left-radius: 6px;
+  border-top-right-radius: 14px;
+}
+
+/* User bubble - sticks right */
 .chat-bubble.user {
   align-self: flex-end;
   background: #e6eef9;
   color: #1a202c;
-  font-size: 15.5px;
-  line-height: 1.6;
-  padding: 12px 18px;
-  border-radius: 16px 16px 4px 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  max-width: 65%;       /* narrower, feels natural */
-  margin-right: 10px;   /* keeps from touching edge */
-  animation: fadeInUp 0.3s ease-in-out;
-  transition: all 0.3s ease;
-  white-space: pre-wrap;
-}
-
-/* AI Messages (Left) */
-.chat-bubble.ai {
-  background: linear-gradient(135deg, #1f3c88, #4b90ff);
-  color: #ffffff;
-  font-size: 15.5px;
-  line-height: 1.6;
-  padding: 14px 18px;
-  border-radius: 16px 16px 16px 4px;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
-  max-width: 65%;       /* narrower, chat-style */
-  margin-left: 10px;    /* keeps from touching edge */
-  align-self: flex-start;
-  animation: fadeInUp 0.4s ease-out;
-  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  margin-right: 0px;    /* ✅ small margin from edge */
+  border-top-right-radius: 6px;
+  border-top-left-radius: 14px;
 }
 
 @keyframes fadeInUp {
