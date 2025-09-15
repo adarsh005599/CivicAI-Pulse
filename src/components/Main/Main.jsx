@@ -104,9 +104,7 @@ export const Main = () => {
             <img src={assets.send_icon} alt="Send" onClick={handleSend} />
           </div>
 
-          <p className="bottom-info">
-            ⚠️ Comrade AI may not always be accurate. Double-check important facts.
-          </p>
+
         </div>
       </div>
     </div>
