@@ -23,7 +23,7 @@ Comrade AI is an intelligent assistant web app built with Cohere’s NLP APIs an
 
 🎨 Clean and modern UI
 
-🌐 Fully responsive – works on all screen sizes
+🌐 Fully responsive – works on all screen sizesi, ncluding mobile and bigger screens 
 
 🛠️ Built With
 React+Vite
