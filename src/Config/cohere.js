@@ -8,11 +8,13 @@ const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 export const runGeminiPrompt = async (prompt) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
+    // Generate content
     const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = await response.text();
+
+    // ✅ Correct way to access text:
+    const text = result.response.text();
 
     return text || "⚠️ No response from Gemini.";
   } catch (error) {
