@@ -24,11 +24,17 @@
   height: min-content;
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   /* Deep, sophisticated dark theme: New colors for a more premium feel */
   background: linear-gradient(135deg, var(--dark-base), var(--dark-mid));
   animation: gradientShift 18s ease infinite; /* Slower, more subtle shift */
   padding-left: 80px; /* Increased initial padding for a premium look (desktop) */
   min-height: 100vh; /* Ensure it covers the full viewport height */
+=======
+  background: linear-gradient(135deg, #161e3b, #1f3c88); /* govt-style dark blues */
+  animation: gradientShift 12s ease infinite;
+  padding-left: 40px; /* respects collapsed sidebar */
+>>>>>>> f1e97a0a189efff1241cad8cfa159b115c7139d4
 }
 
 @keyframes gradientShift {
@@ -109,34 +115,54 @@
 }
 
 .greet {
+<<<<<<< HEAD
   margin: 20px 0px 10px 0px;
   font-size: 42px; /* Biggest, most impactful greeting */
   font-weight: 800;
   padding: 0;
   color: var(--text-primary);
+=======
+  margin: 40px 0px 20px 0px;
+  font-size: 32px;
+  font-weight: 600;
+  padding: 20px;
+  color: #f5f5f5;
+>>>>>>> f1e97a0a189efff1241cad8cfa159b115c7139d4
   text-align: left;
 }
 
 .greet span {
+<<<<<<< HEAD
   /* VIVID GRADIENT & GLOW */
   background: var(--vivid-gradient);
+=======
+  background: linear-gradient(135deg, #1f3c88, #4b90ff);
+>>>>>>> f1e97a0a189efff1241cad8cfa159b115c7139d4
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 8px rgba(255, 0, 170, 0.6);
 }
 
 
+<<<<<<< HEAD
 /* ---------------------------------------------------------------------- */
 /* 4. CHAT AREA AND BUBBLES (VIVID HIGHLIGHTS) */
 /* ---------------------------------------------------------------------- */
 
+=======
+/* Chat Box */
+>>>>>>> f1e97a0a189efff1241cad8cfa159b115c7139d4
 .chat-container {
   display: flex;
   flex-direction: column;
   gap: 18px;
   scroll-behavior: smooth;
   flex-grow: 1;
+<<<<<<< HEAD
   padding: 0px 0px 80px 0;
+=======
+  padding: 0px 0px 80px 0; /* extra bottom padding for input */
+>>>>>>> f1e97a0a189efff1241cad8cfa159b115c7139d4
   overflow-y: auto;
   min-height: 50vh;
   /* Custom scrollbar matching vivid accents */
@@ -154,6 +180,7 @@
   background-color: var(--dark-mid);
 }
 
+<<<<<<< HEAD
 /* Base Bubble Styles */
 .chat-bubble {
   padding: 16px 22px; /* Generous padding */
@@ -183,6 +210,61 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+=======
+
+/* User Messages (Right) */
+.chat-bubble {
+  padding: 12px 16px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  border-radius: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  max-width: 65%;       /* ✅ prevents stretching */
+  text-align: left;     /* ✅ keeps text aligned properly */
+}
+
+/* AI bubble - sticks left */
+.chat-bubble.ai {
+  align-self: flex-start;
+  background: linear-gradient(135deg, #1f3c88, #4b90ff);
+  color: #fff;
+  margin-left: 0px;     /* ✅ small margin from edge */
+  border-top-left-radius: 6px;
+  border-top-right-radius: 14px;
+}
+
+/* User bubble - sticks right */
+.chat-bubble.user {
+  align-self: flex-end;
+  background: #e6eef9;
+  color: #1a202c;
+  margin-right: 0px;    /* ✅ small margin from edge */
+  border-top-right-radius: 6px;
+  border-top-left-radius: 14px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-bubble.ai {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+>>>>>>> f1e97a0a189efff1241cad8cfa159b115c7139d4
 .chat-bubble.ai strong {
   font-weight: bold;
   color: var(--vivid-cyan); /* Electric Cyan for strong tags */
@@ -209,22 +291,40 @@
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+<<<<<<< HEAD
   width: 95%;
   max-width: 750px; /* Slightly wider input */
   padding: 0;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.7); /* Stronger shadow to make it float dramatically */
+=======
+  width: 100%;
+  max-width: 600px;
+  background: transparent;
+  padding: 12px 0;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+>>>>>>> f1e97a0a189efff1241cad8cfa159b115c7139d4
   z-index: 100;
 }
 
 .search-box {
   display: flex;
   align-items: center;
+<<<<<<< HEAD
   gap: 15px;
   background: #1a2039;
   padding: 14px 28px; /* More padding */
   border-radius: 35px; /* More pill-like */
   border: 2px solid #2e3b5e; /* Subtle starting border */
   transition: all 0.3s ease;
+=======
+  gap: 20px;
+   background: rgba(255, 255, 255, 0.8);
+  color: black;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 2px solid #1f3c88;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+>>>>>>> f1e97a0a189efff1241cad8cfa159b115c7139d4
 }
 
 /* World-Class Active State: Multi-color Outer Glow */
@@ -241,9 +341,14 @@
   background: transparent;
   border: none;
   outline: none;
+<<<<<<< HEAD
   font-size: 18px;
   color: var(--text-primary); /* Pure white text */
   padding: 4px 0;
+=======
+  font-size: 16px;
+  color: black;
+>>>>>>> f1e97a0a189efff1241cad8cfa159b115c7139d4
 }
 
 .search-box img {
@@ -264,9 +369,15 @@
 
 .bottom-info {
   text-align: center;
+<<<<<<< HEAD
   font-size: 11px;
   color: #6a7495;
   margin-top: 12px;
+=======
+  font-size: 12px;
+  color: #8c8c8c;
+  margin-top: 8px;
+>>>>>>> f1e97a0a189efff1241cad8cfa159b115c7139d4
 }
 
 
@@ -278,7 +389,39 @@
   .Main {
     padding-left: 0; /* No sidebar padding on mobile */
   }
+<<<<<<< HEAD
   
+=======
+  .chat-container {
+    padding-bottom: 120px; /* more padding for smaller screens */
+  }
+
+
+  .Main-container {
+    padding: 10px;
+    margin-top: 60px;
+  }
+  .main-bottom{
+    .main-bottom {
+    left: 0;
+    transform: none;
+    max-width: 100%;
+    padding: 8px 16px;
+  }
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  .greet {
+    font-size: 28px;
+    padding: 10px;
+  }
+
+  .search-box {
+    padding: 8px 12px;
+    gap: 10px;
+  }
+
+>>>>>>> f1e97a0a189efff1241cad8cfa159b115c7139d4
   .nav {
     padding: 12px 15px; 
   }

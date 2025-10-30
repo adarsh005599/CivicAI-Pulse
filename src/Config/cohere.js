@@ -10,6 +10,7 @@ export const runGeminiPrompt = async (userPrompt) => {
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
+<<<<<<< HEAD
     // Convert StartBridge data (array) into a readable text block
     const formattedData = startbridgeData
       .map((item, index) => 
@@ -38,6 +39,13 @@ Guidelines:
 
     const result = await model.generateContent(contextualPrompt);
     const text = result?.response?.text();
+=======
+    // Generate content
+    const result = await model.generateContent(prompt);
+
+    // ✅ Correct way to access text:
+    const text = result.response.text();
+>>>>>>> f1e97a0a189efff1241cad8cfa159b115c7139d4
 
     return text || "⚠️ No response from Gemini.";
   } catch (error) {

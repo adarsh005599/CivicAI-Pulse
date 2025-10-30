@@ -104,7 +104,11 @@ export const Main = () => {
             <img src={assets.send_icon} alt="Send" onClick={handleSend} />
           </div>
 
+<<<<<<< HEAD
           
+=======
+
+>>>>>>> f1e97a0a189efff1241cad8cfa159b115c7139d4
         </div>
       </div>
     </div>
