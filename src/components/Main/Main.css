@@ -1,15 +1,39 @@
+/**
+ * ✅ WORLD-TOP-CLASS VIVID CHATBOT STYLESHEET
+ *
+ * This version uses a high-contrast, vivid color palette (Cyan/Pink)
+ * for maximum "premium" impact and features enhanced glow effects.
+ */
+
+/* --- VIVID COLOR PALETTE DEFINITIONS --- */
+:root {
+  --vivid-gradient: linear-gradient(45deg, #00C8FF, #FF00AA); /* Cyan to Electric Pink */
+  --vivid-cyan: #00f0ff;
+  --vivid-pink: #ff70a6;
+  --dark-base: #0d1226;
+  --dark-mid: #141c33;
+  --text-primary: #f0f8ff; /* Pure white text */
+}
+
+/* ---------------------------------------------------------------------- */
+/* 1. MAIN LAYOUT AND BACKGROUND */
+/* ---------------------------------------------------------------------- */
+
 .Main {
   flex: 1;
   height: min-content;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #0D324D, #7F5A83);
-  animation: gradientShift 12s ease infinite;
-  padding-left: 40px; /* respects collapsed sidebar */
+  /* Deep, sophisticated dark theme: New colors for a more premium feel */
+  background: linear-gradient(135deg, var(--dark-base), var(--dark-mid));
+  animation: gradientShift 18s ease infinite; /* Slower, more subtle shift */
+  padding-left: 80px; /* Increased initial padding for a premium look (desktop) */
+  min-height: 100vh; /* Ensure it covers the full viewport height */
 }
 
 @keyframes gradientShift {
   0% {
+    background-size: 400% 400%;
     background-position: 0% 50%;
   }
   50% {
@@ -20,186 +44,196 @@
   }
 }
 
-/* Top Navbar */
+/* ---------------------------------------------------------------------- */
+/* 2. TOP NAVBAR (GLASSMORHISM + VIVID LOGO/AVATAR) */
+/* ---------------------------------------------------------------------- */
+
 .nav {
-  
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  /* Enhanced Glassmorphism Effect */
+  background: rgba(13, 18, 38, 0.85); /* Less transparent for cleaner look */
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Stronger drop shadow for lift */
 }
 
 .nav p {
-  font-size: 20px;
-  font-weight: 600;
-  margin-left: 80px;
-  background: linear-gradient(135deg, #ff6a5e, #4b90ff);
+  font-size: 24px; /* Larger, bolder title */
+  font-weight: 800;
+  margin-left: 0;
+  /* VIVID GRADIENT & GLOW */
+  background: var(--vivid-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 5px rgba(255, 0, 170, 0.7); /* Subtle glow on text */
   cursor: default;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .nav p:hover {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .nav img {
-  width: 40px;
-  height: 40px;
+  width: 48px; /* Larger avatar */
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 4px solid var(--vivid-cyan); /* Stronger, single vivid border */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .nav img:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 10px rgba(75, 144, 255, 0.4);
+  /* Intense, focused glow on hover */
+  box-shadow: 0 0 20px var(--vivid-cyan), 0 0 30px rgba(0, 200, 255, 0.5);
 }
 
-/* Main Content Container */
+/* ---------------------------------------------------------------------- */
+/* 3. MAIN CONTENT CONTAINER AND GREETING */
+/* ---------------------------------------------------------------------- */
+
 .Main-container {
   flex: 1;
-  max-width: 900px;
-  margin: auto;
-  margin-top: 0;
-  height: calc(100vh - 160px);
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px 0 160px 0;
   display: flex;
   flex-direction: column;
 }
 
 .greet {
-  margin: 50px 0px;
-  font-size: 40px;
-  font-weight: 600;
-  padding: 20px;
-  color: #f5f5f5;
-  text-align: center;
+  margin: 20px 0px 10px 0px;
+  font-size: 42px; /* Biggest, most impactful greeting */
+  font-weight: 800;
+  padding: 0;
+  color: var(--text-primary);
+  text-align: left;
 }
 
 .greet span {
-  background: linear-gradient(135deg, #4b90ff, #ff6a5e, #f5a623);
+  /* VIVID GRADIENT & GLOW */
+  background: var(--vivid-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px rgba(255, 0, 170, 0.6);
 }
 
-/* Chat Box */
 
+/* ---------------------------------------------------------------------- */
+/* 4. CHAT AREA AND BUBBLES (VIVID HIGHLIGHTS) */
+/* ---------------------------------------------------------------------- */
 
-/* Chat Bubbles */
 .chat-container {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 18px;
   scroll-behavior: smooth;
   flex-grow: 1;
-  padding: 30px;
+  padding: 0px 0px 80px 0;
   overflow-y: auto;
-  min-height: 60vh;
+  min-height: 50vh;
+  /* Custom scrollbar matching vivid accents */
+  scrollbar-width: thin;
+  scrollbar-color: var(--vivid-cyan) var(--dark-mid);
+}
+.chat-container::-webkit-scrollbar {
+  width: 8px;
+}
+.chat-container::-webkit-scrollbar-thumb {
+  background-color: var(--vivid-cyan);
+  border-radius: 10px;
+}
+.chat-container::-webkit-scrollbar-track {
+  background-color: var(--dark-mid);
 }
 
+/* Base Bubble Styles */
+.chat-bubble {
+  padding: 16px 22px; /* Generous padding */
+  font-size: 17px; /* Excellent readability */
+  line-height: 1.7;
+  border-radius: 20px; /* Softer, modern border radius */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4); /* Deeper shadow */
+  max-width: 75%; /* Slightly wider max-width for better use of space */
+  text-align: left;
+  animation: fadeInUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy entry */
+}
+
+/* AI bubble (Dark/Accent) */
+.chat-bubble.ai {
+  align-self: flex-start;
+  background: #1f2747; /* Dark accent base */
+  color: var(--text-primary);
+  border-top-left-radius: 6px;
+}
+
+/* User bubble (Light/Contrast) */
 .chat-bubble.user {
   align-self: flex-end;
-  background: linear-gradient(135deg, #c6f6d5, #c3c9c5);
-  color: #1a202c;
-  text-align: left;
-  font-size: 15.5px;
-  line-height: 1.6;
-  padding: 12px 18px;
-  border-radius: 16px 16px 4px 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  width: fit-content;
-  max-width: 75%;
-  min-width: 60px;
-  animation: fadeInUp 0.3s ease-in-out;
-  transition: all 0.3s ease;
-  white-space: pre-wrap;
+  background: #dce4f1;
+  color: #111a30;
+  border-top-right-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-
-
-.chat-bubble.ai {
-  background: linear-gradient(135deg, #3f2b96, #a8c0ff, #ff6a00);
-  padding: 12px 16px;
-  border-radius: 16px;
-  max-width: 80%;
-  margin: 10px 0;
-  align-self: flex-start;
-  line-height: 1.6;
-  font-size: 15.5px;
-  padding: 16px 20px;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
-  animation: fadeIn 0.4s ease-in-out;
-    color: #ffffffde; /* Softer white */
-  text-shadow: 0 1px 1px rgba(0,0,0,0.3); /* Helps contrast */
-}
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.chat-bubble.ai {
-  animation: fadeInUp 0.4s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 .chat-bubble.ai strong {
   font-weight: bold;
-  color: #ffe066;
+  color: var(--vivid-cyan); /* Electric Cyan for strong tags */
+  text-shadow: 0 0 3px rgba(0, 240, 255, 0.8);
 }
 
 .chat-bubble.ai em {
   font-style: italic;
-  color: #ffb3c1;
+  color: var(--vivid-pink); /* Bright Pink for emphasis */
 }
-
-
 
 .chat-bubble.typing {
   font-style: italic;
-  color: #ca4848;
+  color: var(--vivid-pink);
 }
 
-/* Bottom Input Area */
+
+/* ---------------------------------------------------------------------- */
+/* 5. BOTTOM INPUT AREA (VIVID GLOW EFFECT) */
+/* ---------------------------------------------------------------------- */
+
 .main-bottom {
   position: fixed;
-  bottom: 0;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 8px 10px;
-  width: 100%;
-  max-width: 600px;
-  background: transparent;
-  padding: 12px 0;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  max-width: 750px; /* Slightly wider input */
+  padding: 0;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7); /* Stronger shadow to make it float dramatically */
   z-index: 100;
 }
 
 .search-box {
   display: flex;
   align-items: center;
-  gap: 20px;
-  background: rgba(4, 3, 3, 0.902);
-  padding: 10px 20px;
-  border-radius: 50px;
-  border: 2px solid transparent;
-  transition: border 0.3s ease, box-shadow 0.3s ease;
+  gap: 15px;
+  background: #1a2039;
+  padding: 14px 28px; /* More padding */
+  border-radius: 35px; /* More pill-like */
+  border: 2px solid #2e3b5e; /* Subtle starting border */
+  transition: all 0.3s ease;
 }
 
-.search-box:hover {
-  border: 2px solid #4b90ff;
-  box-shadow: 0 0 10px rgba(75, 144, 255, 0.3);
+/* World-Class Active State: Multi-color Outer Glow */
+.search-box:focus-within {
+  border: 2px solid transparent;
+  box-shadow: 
+    0 0 10px var(--vivid-cyan), 
+    0 0 30px var(--vivid-pink), /* Pink layer */
+    0 0 60px rgba(0, 200, 255, 0.2); /* Wide cyan aura */
 }
 
 .search-box input {
@@ -207,76 +241,91 @@
   background: transparent;
   border: none;
   outline: none;
-  font-size: 16px;
-  color: wheat;
+  font-size: 18px;
+  color: var(--text-primary); /* Pure white text */
+  padding: 4px 0;
 }
 
 .search-box img {
-  width: 24px;
+  width: 28px; /* Larger icon */
   cursor: pointer;
-  transition: transform 0.2s ease;
+  /* ICON GLOW */
+  filter: invert(1) drop-shadow(0 0 8px var(--vivid-cyan));
+  transition: all 0.3s ease;
 }
 
 .search-box img:hover {
-  transform: scale(1.2);
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.search-box img:active {
+  transform: scale(0.9);
 }
 
 .bottom-info {
   text-align: center;
-  font-size: 12px;
-  background: linear-gradient(45deg, #4b90ff, #ff5546, #ff8c00);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-top: 8px;
+  font-size: 11px;
+  color: #6a7495;
+  margin-top: 12px;
 }
 
-/* ❗️Mobile Styles for Sidebar Spacing + Cleanup */
+
+/* ---------------------------------------------------------------------- */
+/* 6. MOBILE STYLES (ENHANCED RESPONSIVENESS) */
+/* ---------------------------------------------------------------------- */
+
 @media (max-width: 768px) {
   .Main {
-    padding-left: 50px; /* To account for 40px sidebar + gap */
+    padding-left: 0; /* No sidebar padding on mobile */
   }
-
-  .Main-container {
-    padding: 10px;
-    margin-top: 60px;
-  }
-  .main-bottom{
-   
-    margin-left: 30px;
-    margin-right: 30px;
-  }
-  .greet {
-    font-size: 28px;
-    padding: 10px;
-  }
-
-  .search-box {
-    padding: 8px 12px;
-    gap: 10px;
-  }
-
+  
   .nav {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 16px 12px;
+    padding: 12px 15px; 
   }
 
   .nav p {
-    font-size: 18px;
-    margin-left: 0;
-    text-align: center;
+    font-size: 22px; /* Slightly reduced size for small screens */
   }
-
+  
   .nav img {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
   }
 
+  .Main-container {
+    padding: 10px 15px 120px 15px; /* Crucial padding for content */
+    margin-top: 55px; /* Give room below the fixed nav */
+  }
+
+  .greet {
+    font-size: 34px;
+  }
+
+  .chat-bubble {
+    max-width: 90%; /* Maximum readability on mobile */
+    font-size: 16px;
+    padding: 12px 16px;
+  }
+
+  /* Input area adjustments */
   .main-bottom {
-    padding: 8px;
-    max-width: 100%;
-    left: 0;
-    transform: none;
+    bottom: 10px;
+    width: calc(100% - 30px); 
+    max-width: 95%; 
+  }
+  
+  .search-box {
+    padding: 12px 20px;
+    border-radius: 30px;
+  }
+  
+  .search-box input {
+    font-size: 17px;
+  }
+
+  .search-box img {
+    width: 26px; /* Great touch target size */
   }
 }
+

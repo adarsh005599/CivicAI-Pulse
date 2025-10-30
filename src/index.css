@@ -29,10 +29,3 @@ body.dark-mode .response-box {
   color: white;
 }
 
-body.dark-mode .Sidebar {
-  background-color: #333;
-}
-
-body.dark-mode .Sidebar .recent-entry:hover {
-  background-color: #4a4a4a;
-}

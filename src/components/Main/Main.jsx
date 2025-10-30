@@ -3,7 +3,7 @@ import './Main.css';
 import { assets } from '../../assets/assets';
 import { AppContext } from '../../Context/Context';
 import { runGeminiPrompt } from "../../Config/cohere.js";
-import sarek_icon from '../Main/sarek copy.jpg'
+import logo from '../Main/logo.png'
 import ReactMarkdown from 'react-markdown';
 
 export const Main = () => {
@@ -65,7 +65,7 @@ export const Main = () => {
     <div className="Main">
       <div className="nav">
         <p>Comrade AI</p>
-        <img src={sarek_icon} alt="user" />
+        <img src={logo} alt="user" />
       </div>
 
       <div className="Main-container">
@@ -104,9 +104,7 @@ export const Main = () => {
             <img src={assets.send_icon} alt="Send" onClick={handleSend} />
           </div>
 
-          <p className="bottom-info">
-            ⚠️ Comrade AI may not always be accurate. Double-check important facts.
-          </p>
+          
         </div>
       </div>
     </div>
