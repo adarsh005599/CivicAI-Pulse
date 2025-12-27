@@ -1,11 +1,4 @@
-/**
- * ✅ WORLD-TOP-CLASS VIVID CHATBOT STYLESHEET
- *
- * This version uses a high-contrast, vivid color palette (Cyan/Pink)
- * for maximum "premium" impact and features enhanced glow effects.
- */
 
-/* --- VIVID COLOR PALETTE DEFINITIONS --- */
 :root {
   --vivid-gradient: linear-gradient(45deg, #00C8FF, #FF00AA); /* Cyan to Electric Pink */
   --vivid-cyan: #00f0ff;
@@ -15,9 +8,7 @@
   --text-primary: #f0f8ff; /* Pure white text */
 }
 
-/* ---------------------------------------------------------------------- */
-/* 1. MAIN LAYOUT AND BACKGROUND */
-/* ---------------------------------------------------------------------- */
+
 
 .Main {
   flex: 1;
@@ -44,9 +35,6 @@
   }
 }
 
-/* ---------------------------------------------------------------------- */
-/* 2. TOP NAVBAR (GLASSMORHISM + VIVID LOGO/AVATAR) */
-/* ---------------------------------------------------------------------- */
 
 .nav {
   display: flex;
@@ -95,9 +83,7 @@
   box-shadow: 0 0 20px var(--vivid-cyan), 0 0 30px rgba(0, 200, 255, 0.5);
 }
 
-/* ---------------------------------------------------------------------- */
-/* 3. MAIN CONTENT CONTAINER AND GREETING */
-/* ---------------------------------------------------------------------- */
+
 
 .Main-container {
   flex: 1;
@@ -110,7 +96,7 @@
 
 .greet {
   margin: 20px 0px 10px 0px;
-  font-size: 42px; /* Biggest, most impactful greeting */
+  font-size: 35px; 
   font-weight: 800;
   padding: 0;
   color: var(--text-primary);
