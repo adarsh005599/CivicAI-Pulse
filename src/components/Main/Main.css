@@ -1,239 +1,153 @@
-/**
- * ✅ WORLD-TOP-CLASS VIVID CHATBOT STYLESHEET
- *
- * This version uses a high-contrast, vivid color palette (Cyan/Pink)
- * for maximum "premium" impact and features enhanced glow effects.
- */
-
-/* --- VIVID COLOR PALETTE DEFINITIONS --- */
 :root {
-  --vivid-gradient: linear-gradient(45deg, #00C8FF, #FF00AA); /* Cyan to Electric Pink */
-  --vivid-cyan: #00f0ff;
-  --vivid-pink: #ff70a6;
-  --dark-base: #0d1226;
-  --dark-mid: #141c33;
-  --text-primary: #f0f8ff; /* Pure white text */
+  --sb-cream: #ECE3CE;
+  --sb-sage: #739072;
+  --sb-forest: #4F6F52;
+  --sb-earth: #3A4D39;
+  --sb-dark: #1a231a;
+  --sb-glass: rgba(115, 144, 114, 0.1);
 }
-
-/* ---------------------------------------------------------------------- */
-/* 1. MAIN LAYOUT AND BACKGROUND */
-/* ---------------------------------------------------------------------- */
 
 .Main {
   flex: 1;
-  height: min-content;
   display: flex;
   flex-direction: column;
-  /* Deep, sophisticated dark theme: New colors for a more premium feel */
-  background: linear-gradient(135deg, var(--dark-base), var(--dark-mid));
-  animation: gradientShift 18s ease infinite; /* Slower, more subtle shift */
-  padding-left: 80px; /* Increased initial padding for a premium look (desktop) */
-  min-height: 100vh; /* Ensure it covers the full viewport height */
+  background: var(--sb-dark);
+  min-height: 100vh;
+  color: var(--sb-cream);
+  font-family: 'Inter', sans-serif;
 }
 
-@keyframes gradientShift {
-  0% {
-    background-size: 400% 400%;
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* ---------------------------------------------------------------------- */
-/* 2. TOP NAVBAR (GLASSMORHISM + VIVID LOGO/AVATAR) */
-/* ---------------------------------------------------------------------- */
-
+/* --- Navigation --- */
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  padding: 1rem 2rem;
+  background: rgba(26, 35, 26, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(115, 144, 114, 0.2);
   position: sticky;
   top: 0;
-  z-index: 50;
-  /* Enhanced Glassmorphism Effect */
-  background: rgba(13, 18, 38, 0.85); /* Less transparent for cleaner look */
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Stronger drop shadow for lift */
+  z-index: 100;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-icon {
+  color: var(--sb-sage);
 }
 
 .nav p {
-  font-size: 24px; /* Larger, bolder title */
+  font-size: 1.25rem;
   font-weight: 800;
-  margin-left: 0;
-  /* VIVID GRADIENT & GLOW */
-  background: var(--vivid-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 5px rgba(255, 0, 170, 0.7); /* Subtle glow on text */
-  cursor: default;
-  transition: all 0.3s ease;
+  letter-spacing: -0.02em;
+  color: var(--sb-cream);
 }
 
-.nav p:hover {
-  opacity: 0.85;
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 2px solid var(--sb-sage);
+  transition: transform 0.3s ease;
 }
 
-.nav img {
-  width: 48px; /* Larger avatar */
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-  cursor: pointer;
-  border: 4px solid var(--vivid-cyan); /* Stronger, single vivid border */
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.nav img:hover {
-  transform: scale(1.1);
-  /* Intense, focused glow on hover */
-  box-shadow: 0 0 20px var(--vivid-cyan), 0 0 30px rgba(0, 200, 255, 0.5);
-}
-
-/* ---------------------------------------------------------------------- */
-/* 3. MAIN CONTENT CONTAINER AND GREETING */
-/* ---------------------------------------------------------------------- */
-
+/* --- Chat Container --- */
 .Main-container {
   flex: 1;
-  max-width: 800px;
+  max-width: 900px;
+  width: 100%;
   margin: 0 auto;
-  padding: 20px 0 160px 0;
   display: flex;
   flex-direction: column;
+  padding: 2rem 1rem 180px 1rem;
 }
 
 .greet {
-  margin: 20px 0px 10px 0px;
-  font-size: 42px; /* Biggest, most impactful greeting */
-  font-weight: 800;
-  padding: 0;
-  color: var(--text-primary);
-  text-align: left;
+  margin-bottom: 3rem;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.greet p {
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: rgba(236, 227, 206, 0.5);
 }
 
 .greet span {
-  /* VIVID GRADIENT & GLOW */
-  background: var(--vivid-gradient);
+  color: var(--sb-cream);
+  background: linear-gradient(to right, var(--sb-cream), var(--sb-sage));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 8px rgba(255, 0, 170, 0.6);
 }
-
-
-/* ---------------------------------------------------------------------- */
-/* 4. CHAT AREA AND BUBBLES (VIVID HIGHLIGHTS) */
-/* ---------------------------------------------------------------------- */
 
 .chat-container {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  scroll-behavior: smooth;
-  flex-grow: 1;
-  padding: 0px 0px 80px 0;
-  overflow-y: auto;
-  min-height: 50vh;
-  /* Custom scrollbar matching vivid accents */
-  scrollbar-width: thin;
-  scrollbar-color: var(--vivid-cyan) var(--dark-mid);
-}
-.chat-container::-webkit-scrollbar {
-  width: 8px;
-}
-.chat-container::-webkit-scrollbar-thumb {
-  background-color: var(--vivid-cyan);
-  border-radius: 10px;
-}
-.chat-container::-webkit-scrollbar-track {
-  background-color: var(--dark-mid);
+  gap: 1.5rem;
 }
 
-/* Base Bubble Styles */
+.chat-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.user-wrapper { justify-content: flex-end; }
+.ai-wrapper { justify-content: flex-start; }
+
 .chat-bubble {
-  padding: 16px 22px; /* Generous padding */
-  font-size: 17px; /* Excellent readability */
-  line-height: 1.7;
-  border-radius: 20px; /* Softer, modern border radius */
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4); /* Deeper shadow */
-  max-width: 75%; /* Slightly wider max-width for better use of space */
-  text-align: left;
-  animation: fadeInUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy entry */
+  padding: 1rem 1.25rem;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 85%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.4s ease-out;
 }
 
-/* AI bubble (Dark/Accent) */
-.chat-bubble.ai {
-  align-self: flex-start;
-  background: #1f2747; /* Dark accent base */
-  color: var(--text-primary);
-  border-top-left-radius: 6px;
-}
-
-/* User bubble (Light/Contrast) */
 .chat-bubble.user {
-  align-self: flex-end;
-  background: #dce4f1;
-  color: #111a30;
-  border-top-right-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: var(--sb-forest);
+  color: white;
+  border-bottom-right-radius: 4px;
 }
 
-.chat-bubble.ai strong {
-  font-weight: bold;
-  color: var(--vivid-cyan); /* Electric Cyan for strong tags */
-  text-shadow: 0 0 3px rgba(0, 240, 255, 0.8);
+.chat-bubble.ai {
+  background: var(--sb-earth);
+  color: var(--sb-cream);
+  border-bottom-left-radius: 4px;
+  border: 1px solid rgba(115, 144, 114, 0.2);
 }
 
-.chat-bubble.ai em {
-  font-style: italic;
-  color: var(--vivid-pink); /* Bright Pink for emphasis */
-}
-
-.chat-bubble.typing {
-  font-style: italic;
-  color: var(--vivid-pink);
-}
-
-
-/* ---------------------------------------------------------------------- */
-/* 5. BOTTOM INPUT AREA (VIVID GLOW EFFECT) */
-/* ---------------------------------------------------------------------- */
-
+/* --- Input Area --- */
 .main-bottom {
   position: fixed;
-  bottom: 20px;
+  bottom: 1.5rem;
   left: 50%;
   transform: translateX(-50%);
-  width: 95%;
-  max-width: 750px; /* Slightly wider input */
-  padding: 0;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7); /* Stronger shadow to make it float dramatically */
+  width: 90%;
+  max-width: 800px;
   z-index: 100;
 }
 
 .search-box {
   display: flex;
   align-items: center;
-  gap: 15px;
-  background: #1a2039;
-  padding: 14px 28px; /* More padding */
-  border-radius: 35px; /* More pill-like */
-  border: 2px solid #2e3b5e; /* Subtle starting border */
-  transition: all 0.3s ease;
+  background: #252f25;
+  padding: 0.75rem 1.25rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(115, 144, 114, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* World-Class Active State: Multi-color Outer Glow */
 .search-box:focus-within {
-  border: 2px solid transparent;
-  box-shadow: 
-    0 0 10px var(--vivid-cyan), 
-    0 0 30px var(--vivid-pink), /* Pink layer */
-    0 0 60px rgba(0, 200, 255, 0.2); /* Wide cyan aura */
+  border-color: var(--sb-sage);
+  box-shadow: 0 0 0 4px rgba(115, 144, 114, 0.15);
+  background: #2a362a;
 }
 
 .search-box input {
@@ -241,91 +155,66 @@
   background: transparent;
   border: none;
   outline: none;
-  font-size: 18px;
-  color: var(--text-primary); /* Pure white text */
-  padding: 4px 0;
+  color: var(--sb-cream);
+  font-size: 1rem;
+  padding-right: 1rem;
 }
 
-.search-box img {
-  width: 28px; /* Larger icon */
+.input-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.action-btn {
+  padding: 0.5rem;
+  color: var(--sb-sage);
   cursor: pointer;
-  /* ICON GLOW */
-  filter: invert(1) drop-shadow(0 0 8px var(--vivid-cyan));
-  transition: all 0.3s ease;
+  border-radius: 8px;
+  transition: background 0.2s;
 }
 
-.search-box img:hover {
-  transform: scale(1.15) rotate(-5deg);
+.action-btn:hover {
+  background: rgba(115, 144, 114, 0.1);
+  color: var(--sb-cream);
 }
 
-.search-box img:active {
-  transform: scale(0.9);
+.send-btn {
+  padding: 0.6rem;
+  background: var(--sb-earth);
+  color: var(--sb-sage);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.send-btn.active {
+  background: var(--sb-forest);
+  color: white;
+  box-shadow: 0 4px 12px rgba(79, 111, 82, 0.3);
 }
 
 .bottom-info {
   text-align: center;
-  font-size: 11px;
-  color: #6a7495;
-  margin-top: 12px;
+  font-size: 0.75rem;
+  color: var(--sb-sage);
+  margin-top: 0.75rem;
+  opacity: 0.6;
 }
 
+/* --- Animations --- */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-/* ---------------------------------------------------------------------- */
-/* 6. MOBILE STYLES (ENHANCED RESPONSIVENESS) */
-/* ---------------------------------------------------------------------- */
-
+/* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
-  .Main {
-    padding-left: 0; /* No sidebar padding on mobile */
-  }
-  
-  .nav {
-    padding: 12px 15px; 
-  }
-
-  .nav p {
-    font-size: 22px; /* Slightly reduced size for small screens */
-  }
-  
-  .nav img {
-    width: 40px;
-    height: 40px;
-    border-width: 3px;
-  }
-
-  .Main-container {
-    padding: 10px 15px 120px 15px; /* Crucial padding for content */
-    margin-top: 55px; /* Give room below the fixed nav */
-  }
-
-  .greet {
-    font-size: 34px;
-  }
-
-  .chat-bubble {
-    max-width: 90%; /* Maximum readability on mobile */
-    font-size: 16px;
-    padding: 12px 16px;
-  }
-
-  /* Input area adjustments */
-  .main-bottom {
-    bottom: 10px;
-    width: calc(100% - 30px); 
-    max-width: 95%; 
-  }
-  
-  .search-box {
-    padding: 12px 20px;
-    border-radius: 30px;
-  }
-  
-  .search-box input {
-    font-size: 17px;
-  }
-
-  .search-box img {
-    width: 26px; /* Great touch target size */
-  }
+  .nav { padding: 0.75rem 1rem; }
+  .greet p { font-size: 1.75rem; }
+  .Main-container { padding-bottom: 140px; }
+  .chat-bubble { max-width: 92%; font-size: 0.95rem; }
+  .main-bottom { width: 95%; bottom: 1rem; }
+  .search-box { padding: 0.6rem 1rem; border-radius: 1rem; }
 }
-

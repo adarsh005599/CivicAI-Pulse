@@ -3,8 +3,9 @@ import './Main.css';
 import { assets } from '../../assets/assets';
 import { AppContext } from '../../Context/Context';
 import { runGeminiPrompt } from "../../Config/cohere.js";
-import logo from '../Main/logo.png'
+import logo from '../Main/logo.png';
 import ReactMarkdown from 'react-markdown';
+import { Mic, Send, Image as ImageIcon, Sparkles } from 'lucide-react';
 
 export const Main = () => {
   const [prompt, setPrompt] = useState('');
@@ -12,7 +13,6 @@ export const Main = () => {
   const chatContainerRef = useRef(null);
   const { chatHistory, setChatHistory, saveSession } = useContext(AppContext);
 
-  // Auto-scroll on chat update
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -31,80 +31,97 @@ export const Main = () => {
 
     const newBotMsg = {
       role: 'assistant',
-      response: reply || '⚠️ Sorry, no response received.',
+      response: reply || '⚠️ Our systems are currently busy. Please try again.',
     };
 
     const newChat = [...updatedHistory, newBotMsg];
     setChatHistory(newChat);
     setIsTyping(false);
     setPrompt('');
-    saveSession(newChat); // Save to localStorage or DB
+    saveSession(newChat);
   };
 
   const startListening = () => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) return alert("Your browser doesn't support voice input.");
-
+    if (!SpeechRecognition) return alert("Browser doesn't support voice input.");
     const recognition = new SpeechRecognition();
     recognition.lang = 'en-US';
     recognition.onresult = (e) => {
-      const transcript = e.results[0][0].transcript;
-      setPrompt((prev) => prev + ' ' + transcript);
+      setPrompt((prev) => prev + ' ' + e.results[0][0].transcript);
     };
     recognition.start();
   };
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setPrompt((prev) => `${prev} [File uploaded: ${file.name}]`);
-    }
-  };
-
   return (
     <div className="Main">
-      <div className="nav">
-        <p>Comrade AI</p>
-        <img src={logo} alt="user" />
-      </div>
+      <nav className="nav">
+        <div className="nav-brand">
+          <Sparkles className="brand-icon" size={20} />
+          <p>Comrade AI</p>
+        </div>
+        <img src={logo} alt="user profile" className="user-avatar" />
+      </nav>
 
       <div className="Main-container">
-        <div className="greet">
-          <p><span>Hey, User.</span></p>
-          <p>How can I help you today?</p>
-        </div>
+        {chatHistory.length === 0 && (
+          <div className="greet">
+            <p><span>Hey, User.</span></p>
+            <p>How can I bridge your ideas today?</p>
+          </div>
+        )}
 
         <div className="chat-container" ref={chatContainerRef}>
           {chatHistory.map((msg, index) => (
-            <div key={index} className={`chat-bubble ${msg.role === 'user' ? 'user' : 'ai'}`}>
-              {msg.role === 'user' ? msg.prompt : 
-              <ReactMarkdown>{msg.response}</ReactMarkdown>
-               }
+            <div key={index} className={`chat-wrapper ${msg.role === 'user' ? 'user-wrapper' : 'ai-wrapper'}`}>
+              <div className={`chat-bubble ${msg.role === 'user' ? 'user' : 'ai'}`}>
+                {msg.role === 'user' ? (
+                  msg.prompt
+                ) : (
+                  <div className="markdown-content">
+                    <ReactMarkdown>{msg.response}</ReactMarkdown>
+                  </div>
+                )}
+              </div>
             </div>
           ))}
-          {isTyping && <div className="chat-bubble ai typing">Typing...</div>}
+          {isTyping && (
+            <div className="chat-wrapper ai-wrapper">
+              <div className="chat-bubble ai typing">
+                <span className="dot"></span>
+                <span className="dot"></span>
+                <span className="dot"></span>
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="main-bottom">
           <div className="search-box">
             <input
               type="text"
-              placeholder="Enter a prompt here"
+              placeholder="Ask anything about the ecosystem..."
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSend()}
             />
-
-            <label htmlFor="file-upload">
-              <img src={assets.gallery_icon} alt="Upload" />
-            </label>
-            <input type="file" id="file-upload" style={{ display: 'none' }} onChange={handleFileUpload} />
-
-            <img src={assets.mic_icon} alt="Mic" onClick={startListening} />
-            <img src={assets.send_icon} alt="Send" onClick={handleSend} />
+            <div className="input-actions">
+              <label htmlFor="file-upload" className="action-btn">
+                <ImageIcon size={20} />
+              </label>
+              <input type="file" id="file-upload" style={{ display: 'none' }} />
+              
+              <button className="action-btn" onClick={startListening}>
+                <Mic size={20} />
+              </button>
+              
+              <button className={`send-btn ${prompt.trim() ? 'active' : ''}`} onClick={handleSend}>
+                <Send size={18} />
+              </button>
+            </div>
           </div>
-
-          
+          <p className="bottom-info">
+            Comrade AI is building opportunity beyond metros.
+          </p>
         </div>
       </div>
     </div>
