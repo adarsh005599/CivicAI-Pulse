@@ -57,7 +57,7 @@ export const Main = () => {
       <nav className="nav">
         <div className="nav-brand">
           <Sparkles className="brand-icon" size={20} />
-          <p>Comrade AI</p>
+          <p>Bridge</p>
         </div>
         <img src={logo} alt="user profile" className="user-avatar" />
       </nav>
@@ -105,17 +105,12 @@ export const Main = () => {
               onKeyDown={(e) => e.key === 'Enter' && handleSend()}
             />
             <div className="input-actions">
-              <label htmlFor="file-upload" className="action-btn">
-                <ImageIcon size={20} />
-              </label>
-              <input type="file" id="file-upload" style={{ display: 'none' }} />
               
-              <button className="action-btn" onClick={startListening}>
-                <Mic size={20} />
-              </button>
+              
+           
               
               <button className={`send-btn ${prompt.trim() ? 'active' : ''}`} onClick={handleSend}>
-                <Send size={18} />
+                <Send className='send-icon' size={18} />
               </button>
             </div>
           </div>
